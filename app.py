@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, StickerSendMessage
 
 from fsm import TocMachine
 from utils import send_text_message
@@ -14,35 +14,88 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "state3"],
+    states=["user", "lobby", "soccer", "basketball",  "baseball",  "soccer_player", "basketball_player",  "baseball_player", "soccer_player_Messi","soccer_player_Neymar","soccer_player_Pogba","soccer_player_Mbappe","soccer_player_Ronaldo","soccer_player_Modric"],
     transitions=[
         {
             "trigger"    : "advance",
             "source"     : "user",
-            "dest"       : "state1",
-            "conditions" : "is_going_to_state1",
+            "dest"       : "lobby",
+            "conditions" : "is_going_to_lobby",
         },
         {
             "trigger"    : "advance",
-            "source"     : "state1",
-            "dest"       : "state2",
-            "conditions" : "is_going_to_state2",
+            "source"     : "lobby",
+            "dest"       : "soccer",
+            "conditions" : "is_going_to_soccer",
         },
         {
             "trigger"    : "advance",
-            "source"     : "state2",
-            "dest"       : "state3",
-            "conditions" : "is_going_to_state3",
+            "source"     : "lobby",
+            "dest"       : "baseball",
+            "conditions" : "is_going_to_baseball",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "lobby",
+            "dest"       : "basketball",
+            "conditions" : "is_going_to_basketball",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "soccer",
+            "dest"       : "soccer_player_Messi",
+            "conditions" : "is_going_to_soccer_player_Messi",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "soccer",
+            "dest"       : "soccer_player_Neymar",
+            "conditions" : "is_going_to_soccer_player_Neymar",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "soccer",
+            "dest"       : "soccer_player_Pogba",
+            "conditions" : "is_going_to_soccer_player_Pogba",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "soccer",
+            "dest"       : "soccer_player_Mbappe",
+            "conditions" : "is_going_to_soccer_player_Mbappe",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "soccer",
+            "dest"       : "soccer_player_Ronaldo",
+            "conditions" : "is_going_to_soccer_player_Ronaldo",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "soccer",
+            "dest"       : "soccer_player_Modric",
+            "conditions" : "is_going_to_soccer_player_Modric",
         },
         {
             "trigger"    : "go_back", 
-            "source"     : ["state1", "state2", "state3"], 
-            "dest"       : "user"
+            "source"     : "soccer", 
+            "dest"       : "lobby"
         },
         {
-            "trigger"    : "go_back_soccer", 
-            "source"     : ["state2", "state3"], 
+            "trigger"    : "go_back", 
+            "source"     : "baseball", 
+            "dest"       : "lobby"
+        },
+        {
+            "trigger"    : "go_back", 
+            "source"     : "basketball", 
+            "dest"       : "lobby"
+        },
+        {
+            "trigger"    : "go_back_user", 
+            "source"     : ["soccer_player_Messi","soccer_player_Neymar","soccer_player_Pogba","soccer_player_Mbappe","soccer_player_Ronaldo","soccer_player_Modric"], 
             "dest"       : "user"
+            #"conditions" : "is_going_back_to_lobby",
         },
     ],
     initial="user",
@@ -124,7 +177,14 @@ def webhook_handler():
         # print(response)
 
         if response == False:
-            send_text_message(event.reply_token, "Not Entering any State")
+            #reply_token=
+            #sticker_message=StickerSendMessage(
+            #    package_id='6632',
+            #    sticker_id='11825378'
+            #)
+            #line_bot_api.reply_message(reply_token, sticker_message)
+            
+            send_text_message(event.reply_token, "Not Entering any State,please try again")
 
     return "OK"
 
