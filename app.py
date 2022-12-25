@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "lobby", "soccer", "basketball",  "baseball",  "soccer_player", "basketball_player",  "baseball_player", "soccer_player_Messi","soccer_player_Neymar","soccer_player_Pogba","soccer_player_Mbappe","soccer_player_Ronaldo","soccer_player_Modric"],
+    states=["user", "lobby", "soccer", "basketball",  "baseball",  "soccer_player", "basketball_player",  "baseball_player", "soccer_player_Messi","soccer_player_Neymar","soccer_player_Pogba","soccer_player_Mbappe","soccer_player_Ronaldo","soccer_player_Modric", "basketball_player_Durant", "basketball_player_Irving", "basketball_player_Harden", "basketball_player_George", "basketball_player_Curry", "baseball_player_Judge", "baseball_player_Betts", "baseball_player_Stanton", "baseball_player_Harper", "baseball_player_Cole"],
     transitions=[
         {
             "trigger"    : "advance",
@@ -77,6 +77,66 @@ machine = TocMachine(
             "conditions" : "is_going_to_soccer_player_Modric",
         },
         {
+            "trigger"    : "advance",
+            "source"     : "basketball",
+            "dest"       : "basketball_player_Durant",
+            "conditions" : "is_going_to_basketball_player_Durant",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "basketball",
+            "dest"       : "basketball_player_Harden",
+            "conditions" : "is_going_to_basketball_player_Harden",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "basketball",
+            "dest"       : "basketball_player_Irving",
+            "conditions" : "is_going_to_basketball_player_Irving",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "basketball",
+            "dest"       : "basketball_player_George",
+            "conditions" : "is_going_to_basketball_player_George",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "basketball",
+            "dest"       : "basketball_player_Curry",
+            "conditions" : "is_going_to_basketball_player_Curry",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "baseball",
+            "dest"       : "baseball_player_Judge",
+            "conditions" : "is_going_to_baseball_player_Judge",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "baseball",
+            "dest"       : "baseball_player_Betts",
+            "conditions" : "is_going_to_baseball_player_Betts",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "baseball",
+            "dest"       : "baseball_player_Stanton",
+            "conditions" : "is_going_to_baseball_player_Stanton",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "baseball",
+            "dest"       : "baseball_player_Harper",
+            "conditions" : "is_going_to_baseball_player_Harper",
+        },
+        {
+            "trigger"    : "advance",
+            "source"     : "baseball",
+            "dest"       : "baseball_player_Cole",
+            "conditions" : "is_going_to_baseball_player_Cole",
+        },
+        {
             "trigger"    : "go_back", 
             "source"     : "soccer", 
             "dest"       : "lobby"
@@ -93,7 +153,7 @@ machine = TocMachine(
         },
         {
             "trigger"    : "go_back_user", 
-            "source"     : ["soccer_player_Messi","soccer_player_Neymar","soccer_player_Pogba","soccer_player_Mbappe","soccer_player_Ronaldo","soccer_player_Modric"], 
+            "source"     : ["soccer_player_Messi","soccer_player_Neymar","soccer_player_Pogba","soccer_player_Mbappe","soccer_player_Ronaldo","soccer_player_Modric", "basketball_player_Durant", "basketball_player_Irving", "basketball_player_Harden", "basketball_player_George", "basketball_player_Curry", "baseball_player_Judge", "baseball_player_Betts", "baseball_player_Stanton", "baseball_player_Harper", "baseball_player_Cole"], 
             "dest"       : "user"
             #"conditions" : "is_going_back_to_lobby",
         },
