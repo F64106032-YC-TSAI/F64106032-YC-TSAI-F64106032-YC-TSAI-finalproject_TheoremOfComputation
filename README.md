@@ -7,3 +7,5 @@
 4.得到圖片後，您將回到最一開始的state，重複步驟1.以繼續進行
 
 ![image](https://user-images.githubusercontent.com/121308153/209562818-ed97d3bc-abb8-4c8e-be29-07bbde138d9d.png)
+![image](https://user-images.githubusercontent.com/121308153/209562922-62086f7a-663e-479a-9d3a-52bc3fd98684.png)
+
