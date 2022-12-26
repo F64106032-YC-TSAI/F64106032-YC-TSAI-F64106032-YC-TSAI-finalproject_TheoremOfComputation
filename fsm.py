@@ -19,7 +19,7 @@ class TocMachine(GraphMachine):
         print("I'm entering lobby")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "lobby enter")
+        send_text_message(reply_token, "lobby enter, please enter a kind of sport")
         #lobby 現在state在lobby不動?
     def on_exit_lobby(self, event):
         print("Leaving lobby state")
@@ -32,7 +32,7 @@ class TocMachine(GraphMachine):
         print("I'm entering soccer")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "soccer enter")
+        send_text_message(reply_token, "soccer enter, please enter a soccer player")
         
     def on_exit_soccer(self, evevt):
         print("Leaving soccer state")
@@ -47,7 +47,7 @@ class TocMachine(GraphMachine):
         print("I'm entering basketball")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "basketball enter")
+        send_text_message(reply_token, "basketball enter, please enter a basketball player")
         
     def on_exit_basketball(self, evevt):
         print("Leaving basketball state")
@@ -60,7 +60,7 @@ class TocMachine(GraphMachine):
         print("I'm entering baseball")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "baseball enter")
+        send_text_message(reply_token, "baseball enter, please enter a baseball player")
         
     def on_exit_baseball(self, evevt):
         print("Leaving baseball state")
